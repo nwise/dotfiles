@@ -1,6 +1,3 @@
-alias w3='cd ~/Sites/within3/big_red && rvm ree-1.8.7-2011.03@w3 && rvm current'
-alias w33='cd ~/Sites/within3/big_red && rvm ree-1.8.7-2011.03@w3-upgrade --create && rvm current'
-
 setopt promptsubst
 autoload -U promptinit
 promptinit
@@ -62,9 +59,18 @@ function whodoneit() {
         done
     )
 }
+alias mysqlstart='sudo /opt/local/bin/mysqld_safe5 &'
+alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
+
+#export PATH="/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin"
 
 # Set up rvm
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+
+# MacPorts Installer addition on 2010-04-21_at_09:59:50: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin:/opt/local/lib/mysql5/bin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 
 export EDITOR=vi
