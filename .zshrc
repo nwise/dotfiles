@@ -13,8 +13,16 @@ export NODE_PATH="/usr/local/lib/node_modules"
 
 # Unbreak broken, non-colored terminal
 export TERM='xterm-color'
-alias ls='ls -Ga'
-alias ll='ls -Gla'
+alias ls='ls -G'
+alias ll='ls -la'
+alias ss='bundle exec script/server'
+alias w3='cd ~/Sites/within3/big_red && rvm ree-1.8.7-2010.02@w3 && rvm current'
+alias w33='cd ~/Sites/within3/big_red && rvm ree-1.8.7-2010.02@w3-upgrade --create'
+alias runcuke='bundle exec cucumber'
+alias be='bundle exec'
+alias rs='bundle exec rails server'
+alias rc='bundle exec rails console'
+alias rspec='bundle exec rspec -fd'
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
 
