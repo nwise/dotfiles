@@ -23,6 +23,7 @@ alias be='bundle exec'
 alias rs='bundle exec rails server'
 alias rc='bundle exec rails console'
 alias rspec='bundle exec rspec -fd'
+alias regentags='ctags --file-scope=no -R'
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
 
