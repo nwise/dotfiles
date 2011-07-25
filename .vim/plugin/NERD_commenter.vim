@@ -1051,7 +1051,7 @@ function! NERDComment(isVisual, type) range
         if s:IsInSexyComment(firstLine) || s:IsCommentedFromStartOfLine(s:Left(), theLine) || s:IsCommentedFromStartOfLine(s:Left({'alt': 1}), theLine)
             call s:UncommentLines(firstLine, lastLine)
         else
-            call s:CommentLinesToggle(forceNested, firstLine, lastLine)
+            call s:CommentLines(forceNested, "left", firstLine, lastLine)
         endif
 
     elseif a:type == 'minimal'
@@ -1469,7 +1469,7 @@ function s:AddLeftDelimAligned(delim, theLine, alignIndx)
         let theLine = repeat(' ', a:alignIndx - strlen(theLine))
     endif
 
-    return strpart(theLine, 0, a:alignIndx) . a:delim . strpart(theLine, a:alignIndx)
+    return strpart(theLine, 0, a:alignIndx) . a:delim . " " . strpart(theLine, a:alignIndx)
 endfunction
 
 " Function: s:AddRightDelim(delim, theLine) {{{2
