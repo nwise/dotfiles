@@ -18,12 +18,17 @@ alias ll='ls -la'
 alias ss='bundle exec script/server'
 alias w3='cd ~/Sites/within3/big_red && rvm ree-1.8.7-2010.02@w3 && rvm current'
 alias w33='cd ~/Sites/within3/big_red && rvm ree-1.8.7-2010.02@w3-upgrade --create'
-alias runcuke='bundle exec cucumber'
 alias be='bundle exec'
 alias rs='bundle exec rails server'
 alias rc='bundle exec rails console'
 alias rsu='bundle exec rspec spec/units'
+
 alias regentags='ctags --file-scope=no -R'
+
+runcuke() {
+  time bundle exec cucumber features/acceptance -t $1
+}
+
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
 
