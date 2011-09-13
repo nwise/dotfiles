@@ -22,11 +22,15 @@ alias be='bundle exec'
 alias rs='bundle exec rails server'
 alias rc='bundle exec rails console'
 alias rsu='bundle exec rspec spec/units'
-
+alias vim='~/bin/mvim'
 alias regentags='ctags --file-scope=no -R'
 
 runcuke() {
   time bundle exec cucumber features/acceptance -t $1
+}
+
+color-my-code(){
+  pygmentize -f rtf -O style=colorful $1 | pbcopy
 }
 
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"

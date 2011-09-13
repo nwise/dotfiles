@@ -1,5 +1,18 @@
 syntax enable
-set background=light
 colorscheme solarized
-
 set guifont=Menlo\ Normal\ 17
+set background=dark
+
+set guifont=Menlo:h12
+set lines=58
+set columns=108
+
+
+set cursorline                "highlight current line
+set cursorcolumn              "highlight current column
+set nobackup
+set nowritebackup
+set noswapfile
+set nowrap
+set number
+set hlsearch
