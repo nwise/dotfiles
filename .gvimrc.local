@@ -1,5 +1,5 @@
 syntax enable
-set background=light
+set background=dark
 colorscheme solarized
 set guifont=Menlo:h12
 set lines=58
