@@ -3,3 +3,6 @@ set background=light
 colorscheme solarized
 
 set guifont=Menlo\ Normal\ 17
+
+set listchars=tab:.>,trail:.
+set list
