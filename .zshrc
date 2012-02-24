@@ -24,6 +24,7 @@ alias rc='bundle exec rails console'
 alias rsu='bundle exec rspec spec/units'
 alias rspec='bundle exec rspec'
 alias regentags='ctags --file-scope=no -R'
+alias hope='cd ~/Sites/northcantonchurch'
 
 runcuke() {
   time bundle exec cucumber features/acceptance -t $1
