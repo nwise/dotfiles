@@ -8,7 +8,7 @@ compinit
 
 # Add paths that should have been there by default
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
-export PATH="/Users/natewise/bin:$PATH"
+export PATH="/Users/nathanwise/bin:$PATH"
 export NODE_PATH="/usr/local/lib/node_modules"
 
 # Unbreak broken, non-colored terminal
