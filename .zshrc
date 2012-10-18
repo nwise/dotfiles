@@ -8,6 +8,7 @@ compinit
 
 # Add paths that should have been there by default
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
+export PATH=$PATH:$HOME/.rvm/bin;$HOME/bin # Add RVM to PATH for scripting
 export PATH="/Users/nathanwise/bin:$PATH"
 export NODE_PATH="/usr/local/lib/node_modules"
 
@@ -16,8 +17,6 @@ export TERM='xterm-color'
 alias ls='ls -G'
 alias ll='ls -la'
 alias ss='bundle exec script/server'
-alias w3='cd ~/Sites/within3/big_red && rvm ree-1.8.7-2010.02@w3 && rvm current'
-#alias w3='cd ~/Sites/within3/big_red && rvm ree-1.8.7-2010.02@w3-upgrade --create'
 alias be='bundle exec'
 alias rs='bundle exec rails server'
 alias rc='bundle exec rails console'
@@ -25,10 +24,6 @@ alias rsu='bundle exec rspec spec/units'
 alias rspec='bundle exec rspec'
 alias regentags='ctags --file-scope=no -R'
 alias hope='cd ~/Sites/northcantonchurch'
-
-runcuke() {
-  time bundle exec cucumber features/acceptance -t $1
-}
 
 color-my-code(){
   pygmentize -f rtf -O style=colorful $1 | pbcopy
@@ -84,17 +79,6 @@ function whodoneit() {
 }
 alias mysqlstart='sudo /opt/local/bin/mysqld_safe5 &'
 alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
-
-#export PATH="/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin"
-
-# Set up rvm
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-
-# MacPorts Installer addition on 2010-04-21_at_09:59:50: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin:/opt/local/lib/mysql5/bin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 
 export EDITOR=vi
 
