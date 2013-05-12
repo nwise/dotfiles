@@ -8,9 +8,10 @@ compinit
 
 # Add paths that should have been there by default
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
-export PATH=$PATH:$HOME/.rvm/bin;$HOME/bin # Add RVM to PATH for scripting
-export PATH="/Users/nathanwise/bin:$PATH"
+#export PATH=${PATH}:$HOME/.rvm/scritps/rvm # Add RVM to PATH for scripting
+export PATH="$HOME/bin:$PATH"
 export NODE_PATH="/usr/local/lib/node_modules"
+source $HOME/.rvm/scripts/rvm
 
 # Unbreak broken, non-colored terminal
 export TERM='xterm-color'
@@ -19,7 +20,9 @@ alias ll='ls -la'
 alias ss='bundle exec script/server'
 alias be='bundle exec'
 alias rs='bundle exec rails server'
+alias rst='RAILS_ENV=test bundle exec rails server'
 alias rc='bundle exec rails console'
+alias rct='RAILS_ENV=test bundle exec rails console'
 alias rsu='bundle exec rspec spec/units'
 alias rspec='bundle exec rspec'
 alias regentags='ctags --file-scope=no -R'
