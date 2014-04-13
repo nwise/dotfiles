@@ -14,3 +14,4 @@ set noswapfile
 set nowrap
 set number
 set hlsearch
+set transparency=10
