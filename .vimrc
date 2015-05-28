@@ -1,4 +1,45 @@
-set nocompatible
+let mapleader = ","
+set nocompatible              " be iMproved, required
+
+filetype off                  " required
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vi
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-dispatch'
+Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'ack.vim'
+Plugin 'minibufexpl.vim'
+Plugin 'align'
+Plugin 'Syntastic'
+Plugin 'endwise.vim'
+Plugin 'vim-indent-object'
+Plugin 'taglist.vim'
+Plugin 'surround.vim'
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"
+let g:rspec_command = "rspec {spec}"
+let g:rspec_runner = "os_x_iterm"
 
 set number
 set ruler
@@ -24,15 +65,8 @@ set wildignore+=*.o,*.obj,.git,*.rbc
 " Status bar
 set laststatus=2
 
-" NERDTree configuration
-let NERDTreeIgnore=['\.rbc$', '\~$']
-map <Leader>n :NERDTreeToggle<CR>
-
 " Command-T configuration
 let g:CommandTMaxHeight=20
-
-" ZoomWin configuration
-map <Leader>z :ZoomWin<CR>
 
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
@@ -93,6 +127,11 @@ command! W :w
 command! Q :q
 command! WQ :wq
 command! Wq :wq
+
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
