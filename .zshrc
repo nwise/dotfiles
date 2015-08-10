@@ -1,19 +1,14 @@
-setopt promptsubst
-autoload -U promptinit
-promptinit
-prompt grb
+export ZSH=$HOME/.oh-my-zsh
+ZSH_THEME="agnoster"
+plugins=(git)
 
-autoload -U compinit
-compinit
-
-# Add paths that should have been there by default
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
 #export PATH=${PATH}:$HOME/.rvm/scritps/rvm # Add RVM to PATH for scripting
 export PATH="$HOME/bin:$PATH"
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
 export NODE_PATH="/usr/local/lib/node_modules"
 source $HOME/.rvm/scripts/rvm
 
-# Unbreak broken, non-colored terminal
 export TERM='xterm-color'
 alias ls='ls -G'
 alias ll='ls -la'
@@ -23,56 +18,15 @@ alias rs='bundle exec rails server'
 alias rst='RAILS_ENV=test bundle exec rails server'
 alias rc='bundle exec rails console'
 alias rct='RAILS_ENV=test bundle exec rails console'
-alias rsu='bundle exec rspec spec/units'
 alias rspec='bundle exec rspec'
 alias regentags='ctags --file-scope=no -R'
-alias hope='cd ~/Sites/northcantonchurch'
+alias delete_orig="find . -name '*.orig' -delete"
+alias ssh_prod="ssh -i ~/.ssh/movable-production.pem -l ubuntu"
+alias ssh_staging="ssh -i ~/.ssh/movable-staging.pem -l ubuntu"
+alias ssh_dev="ssh -i ~/.ssh/movable-development.pem -l ubuntu"
+alias elastic-up="~/workspace/elasticsearch/bin/elasticsearch"
+alias db_test_reset="RAILS_ENV=test rake db:drop db:create; mysql -u root movband_test < db/structure.sql"
 
-color-my-code(){
-  pygmentize -f rtf -O style=colorful $1 | pbcopy
-}
-
-e() {
-  vim $*
-}
-
-export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
-export GREP_OPTIONS="--color"
-
-# Unbreak history
-export HISTSIZE=100000
-export HISTFILE="$HOME/.history"
-export SAVEHIST=$HISTSIZE
-
-# Unbreak Python's error-prone .pyc file generation
-export PYTHONDONTWRITEBYTECODE=1
-
-export WORDCHARS='*?[]~&;!$%^<>'
-
-# ACTUAL CUSTOMIZATION OH NOES!
-gd() { git diff $* | view -; }
-gdc() { gd --cached $*; }
-alias pygrep="grep --include='*.py' $*"
-alias rbgrep="grep --include='*.rb' $*"
-alias r=script/rails
-alias t="script/tests $*"
-alias sr="screen -r"
-
-activate_virtualenv() {
-    if [ -f env/bin/activate ]; then . env/bin/activate;
-    elif [ -f ../env/bin/activate ]; then . ../env/bin/activate;
-    elif [ -f ../../env/bin/activate ]; then . ../../env/bin/activate;
-    elif [ -f ../../../env/bin/activate ]; then . ../../../env/bin/activate;
-    fi
-}
-
-python_module_dir () {
-    echo "$(python -c "import os.path as _, ${1}; \
-        print _.dirname(_.realpath(${1}.__file__[:-1]))"
-        )"
-}
-
-# Originally from Jonathan Penn, with modifications by Gary Bernhardt
 function whodoneit() {
     (set -e &&
         for x in $(git grep -I --name-only $1); do
@@ -80,8 +34,10 @@ function whodoneit() {
         done
     )
 }
+
 alias mysqlstart='sudo /opt/local/bin/mysqld_safe5 &'
 alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
 
 export EDITOR=vi
 
+source $ZSH/oh-my-zsh.sh

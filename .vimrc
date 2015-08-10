@@ -1,4 +1,45 @@
-set nocompatible
+let mapleader=","
+ 
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-dispatch'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'scrooloose/nerdtree'
+Plugin 'minibufexpl.vim'
+Plugin 'snipMate'
+Plugin 'surround.vim'
+Plugin 'syntastic'
+"Plugin 'vim-tags'
+Plugin 'The-NERD-Commenter'
+Plugin 'The-NERD-tree'
+Bundle 'https://github.com/neilagabriel/vim-geeknote'
+Bundle 'https://github.com/ngmy/vim-rubocop'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
 set number
 set ruler
@@ -30,6 +71,7 @@ map <Leader>n :NERDTreeToggle<CR>
 
 " Command-T configuration
 let g:CommandTMaxHeight=20
+
 
 " ZoomWin configuration
 map <Leader>z :ZoomWin<CR>
@@ -94,7 +136,16 @@ command! Q :q
 command! WQ :wq
 command! Wq :wq
 
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
+let g:rspec_runner = "os_x_iterm"
+
+let g:vimrubocop_config = "~/.rubocop/rubocop.yml"
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+set mouse=a
