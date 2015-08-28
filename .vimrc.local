@@ -18,3 +18,4 @@ set guifont=Menlo\ Normal\ 17
 set listchars=tab:.>,trail:.
 set list
 set expandtab ts=2 sw=2 ai
+let mapleader = ","
