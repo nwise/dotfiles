@@ -19,6 +19,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'snipMate'
 Plugin 'surround.vim'
 Plugin 'syntastic'
+Plugin 'elixir-lang/vim-elixir'
 Plugin 'vim-tags'
 Plugin 'The-NERD-Commenter'
 Plugin 'The-NERD-tree'
@@ -141,6 +142,8 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
 let g:rspec_runner = "os_x_iterm"
+
+let g:syntastic_enable_elixir_checker = 1
 
 let g:vimrubocop_config = "~/.rubocop/rubocop.yml"
 " Include user's local vim config
