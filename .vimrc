@@ -14,8 +14,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
 Plugin 'thoughtbot/vim-rspec'
-Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'scrooloose/nerdtree'
+Plugin 'ctrlp.vim'
 Plugin 'snipMate'
 Plugin 'surround.vim'
 Plugin 'syntastic'
@@ -68,10 +68,6 @@ set wildignore+=*.o,*.obj,.git,*.rbc
 
 " Status bar
 set laststatus=2
-
-" Command-T configuration
-let g:CommandTMaxHeight=20
-
 
 " ZoomWin configuration
 map <Leader>z :ZoomWin<CR>
