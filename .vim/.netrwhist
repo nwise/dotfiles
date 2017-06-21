@@ -1,3 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/Users/nathanwise/workspace/movable/WebClient'
+let g:netrw_dirhist_2='/usr/local/etc/nginx'
+let g:netrw_dirhist_3='/Users/nathanwise/.zsh'
+let g:netrw_dirhist_4='/Users/nathanwise/workspace/dhs_group/api/.deliver'

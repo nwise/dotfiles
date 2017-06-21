@@ -2,12 +2,12 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"
 plugins=(git)
 
-export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
+#export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
 #export PATH=${PATH}:$HOME/.rvm/scritps/rvm # Add RVM to PATH for scripting
-export PATH="$HOME/bin:$PATH"
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
-export NODE_PATH="/usr/local/lib/node_modules"
-source $HOME/.rvm/scripts/rvm
+# export PATH="$HOME/bin:$PATH"
+# export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+# export NODE_PATH="/usr/local/lib/node_modules"
+# source $HOME/.rvm/scripts/rvm
 
 export TERM='xterm-color'
 alias ss='bundle exec script/server'

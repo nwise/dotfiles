@@ -14,6 +14,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
 Plugin 'thoughtbot/vim-rspec'
+Plugin 'janko-m/vim-test'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlp.vim'
 Plugin 'snipMate'
@@ -137,7 +138,13 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
-let g:rspec_runner = "os_x_iterm"
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+
+let g:rspec_runner = "os_x_iterm2"
 
 let g:syntastic_enable_elixir_checker = 1
 
@@ -147,3 +154,4 @@ if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 set mouse=a
+set t_Co=256
