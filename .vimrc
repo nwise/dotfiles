@@ -30,6 +30,7 @@ Bundle 'fugitive.vim'
 Bundle 'minibufexpl.vim'
 Bundle 'https://github.com/mustache/vim-mustache-handlebars'
 Bundle 'Align'
+Plugin 'https://github.com/Valloric/YouCompleteMe.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -144,6 +145,12 @@ nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeGlyphReadOnly = "RO"
+map <C-n> :NERDTreeToggle<CR>
+
 let g:rspec_runner = "os_x_iterm2"
 
 let g:syntastic_enable_elixir_checker = 1
@@ -155,3 +162,5 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 set mouse=a
 set t_Co=256
+set rubydll=/Users/nathanwise/.rvm/rubies/ruby-2.4.1/lib/libruby.2.4.1.dylib
+

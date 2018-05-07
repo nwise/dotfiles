@@ -1,10 +1,6 @@
 syntax enable
 colorscheme solarized
-set guifont=Menlo\ Normal\ 17
 set background=dark
-
-set guifont=Menlo:h12
-
 set cursorline                "highlight current line
 set cursorcolumn              "highlight current column
 set nobackup
@@ -13,8 +9,7 @@ set noswapfile
 set nowrap
 set number
 set hlsearch
-set guifont=Menlo\ Normal\ 17
-
+set guifont=Menlo\ for\ Powerline:h15
 set listchars=tab:.>,trail:.
 set list
 set expandtab ts=2 sw=2 ai
