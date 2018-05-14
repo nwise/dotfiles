@@ -4,8 +4,9 @@ require 'erb'
 desc "install the dot files into user's home directory"
 task :install do
   replace_all = false
-  Dir['.*'].each do |file|
-    next if %w[Rakefile .git .gitignore .DS_Store . ..].include? file
+  files = Dir['.*'] << ".config/nvim"
+  files.each do |file|
+    next if %w[.config Rakefile .git .gitignore .DS_Store . ..].include? file
     if File.exist?(File.join(ENV['HOME'], "#{file}"))
       if File.identical? file, File.join(ENV['HOME'], "#{file}")
         puts "identical ~/#{file}"
@@ -41,3 +42,7 @@ def link_file(file)
   system %Q{ln -s "$PWD/#{file}" "$HOME/#{file}"}
 end
 
+def link_dot_config
+  puts "linking ~/.config/nvim"
+  system %{ln -s "$PWD/.config/nvim" "$HOME/.config/nvim"}
+end

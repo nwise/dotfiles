@@ -1,13 +1,17 @@
 let mapleader=","
- 
-set nocompatible              " be iMproved, required
+
+set nocjmpatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+if has('nvim')
+  set rtp+=~/.config/nvim/bundle/Vundle.vim
+else
+  set rubydll=/Users/nathanwise/.rvm/rubies/ruby-2.4.1/lib/libruby.2.4.1.dylib
+  set rtp+=~/.vim/bundle/Vundle.vim
+endif
+
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -15,6 +19,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'janko-m/vim-test'
+Plugin 'mhinz/vim-grepper'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlp.vim'
 Plugin 'snipMate'
@@ -24,7 +29,6 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'vim-tags'
 Plugin 'The-NERD-Commenter'
 Plugin 'The-NERD-tree'
-Bundle 'https://github.com/neilagabriel/vim-geeknote'
 Bundle 'https://github.com/ngmy/vim-rubocop'
 Bundle 'fugitive.vim'
 Bundle 'minibufexpl.vim'
@@ -34,6 +38,7 @@ Plugin 'https://github.com/Valloric/YouCompleteMe.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -156,11 +161,17 @@ let g:rspec_runner = "os_x_iterm2"
 let g:syntastic_enable_elixir_checker = 1
 
 let g:vimrubocop_config = "~/.rubocop/rubocop.yml"
+
+let g:grepper = {}
+let g:grepper.tools = ['grep']
+nnoremap <Leader>* :Grepper -cword -noprompt<CR>
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
+
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 set mouse=a
 set t_Co=256
-set rubydll=/Users/nathanwise/.rvm/rubies/ruby-2.4.1/lib/libruby.2.4.1.dylib
 
