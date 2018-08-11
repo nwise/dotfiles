@@ -1,6 +1,5 @@
 let mapleader=","
 
-set nocjmpatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -24,7 +23,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlp.vim'
 Plugin 'snipMate'
 Plugin 'surround.vim'
-Plugin 'syntastic'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'vim-tags'
 Plugin 'The-NERD-Commenter'
@@ -34,7 +32,8 @@ Bundle 'fugitive.vim'
 Bundle 'minibufexpl.vim'
 Bundle 'https://github.com/mustache/vim-mustache-handlebars'
 Bundle 'Align'
-Plugin 'https://github.com/Valloric/YouCompleteMe.git'
+Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -155,6 +154,8 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeGlyphReadOnly = "RO"
 map <C-n> :NERDTreeToggle<CR>
+
+let g:OmniSharp_server_path = '/Users/nathanwise/omnisharp-osp/run'
 
 let g:rspec_runner = "os_x_iterm2"
 
