@@ -7,24 +7,23 @@ typeset -U fpath
 
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
 export PATH="$HOME/bin:$PATH"
+# export GOROOT=$HOME/go1.X
+export GOPATH=$HOME/workspace/golibs
+export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
-export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
 export JAVA_HOME="$(/usr/libexec/java_home)"
 export NODE_PATH="/usr/local/lib/node_modules"
 
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export TERM='xterm-color'
 export CLICOLOR=1
 export LS_COLORS="di=34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
 
-export WORKON_HOME=$HOME/code/.virtualenvs
-export PROJECT_HOME=$HOME/code
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
-export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
-source /usr/local/bin/virtualenvwrapper.sh
+export CAS_BASE_URL='http://auth.healthspective.dev:3001'
+export MEDICAL_DASHBOARD_HOST='http://medical.healthspective.dev:3002'
+export MOVE_DASHBOARD_HOST='http://engage.healthspective.dev'
 
 alias ss='bundle exec script/server'
 alias be='bundle exec'
@@ -36,7 +35,13 @@ alias rspec='bundle exec rspec'
 alias regentags='ctags --file-scope=no -R'
 alias delete_orig="find . -name '*.orig' -delete"
 alias branch_cleanup="git branch --merged | egrep -v '(^\*|master|dev|qa)' | xargs git branch -d"
+alias elastic-up="~/workspace/elasticsearch/bin/elasticsearch"
 alias weather="curl -4 http://wttr.in/Brecksville"
+alias mysqlstart='sudo /opt/local/bin/mysqld_safe5 &'
+alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
+alias cat='bat'
+alias ping='prettyping --no-legend'
+alias top='sudo htop'
 
 if [ "$TERM" = "xterm-color" ]; then
   export TERM=xterm-256color
@@ -55,3 +60,8 @@ source $ZSH/oh-my-zsh.sh
 
 alias ls='ls -G'
 alias ll='ls -la'
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
+eval "$(direnv hook zsh)"
