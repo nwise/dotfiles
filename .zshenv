@@ -37,6 +37,8 @@ alias delete_orig="find . -name '*.orig' -delete"
 alias branch_cleanup="git branch --merged | egrep -v '(^\*|master|dev|qa)' | xargs git branch -d"
 alias elastic-up="~/workspace/elasticsearch/bin/elasticsearch"
 alias weather="curl -4 http://wttr.in/Brecksville"
+alias kalidb="docker run --rm -d --name db -p 1433:1433 -e ACCEPT_EULA=Y -e SA_PASSWORD=letmein123! nexus3.kalibrate.com:18079/kalibrate/db-data:latest"
+alias swagger-editor="docker pull swaggerapi/swagger-editor && docker run -d -p 8888:8080 swaggerapi/swagger-editor && open http://localhost:8888"
 alias mysqlstart='sudo /opt/local/bin/mysqld_safe5 &'
 alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
 alias cat='bat'
