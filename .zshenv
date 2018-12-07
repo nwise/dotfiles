@@ -5,14 +5,27 @@ plugins=(git)
 fpath=($fpath $HOME/.zsh/func)
 typeset -U fpath
 
-export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
+export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
+source $HOME/.rvm/scripts/rvm
+export PATH="$PATH:$HOME/.dotnet/tools" 
+#export PATH="$PATH:$HOME/workspace/graalvm-ce-1.0.0-rc9/Contents/Home/bin"
 
-export JAVA_HOME="$(/usr/libexec/java_home)"
+export JAVA_HOME="$(/usr/libexec/java_home)/jre"
 export NODE_PATH="/usr/local/lib/node_modules"
+
+#export R_HOME=$(which R)
+#export R_HOME="/usr/local/bin"
+export R_HOME="/Library/Frameworks/R.framework/Resources"
+if [ "${LD_LIBRARY_PATH}" != "" ]
+then
+  export LD_LIBRARY_PATH="/Library/Frameworks/R.framework/Libraries/:${LD_LIBRARY_PATH}"
+else
+  export LD_LIBRARY_PATH="/Library/Frameworks/R.framework/Libraries/"
+fi
 
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
 export TERM='xterm-color'
@@ -39,6 +52,10 @@ alias branch_cleanup="git branch --merged | egrep -v '(^\*|master|dev|qa)' | xar
 alias weather="curl -4 http://wttr.in/Brecksville"
 alias kalidb="docker run --rm -d --name db -p 1433:1433 -e ACCEPT_EULA=Y -e SA_PASSWORD=letmein123! nexus3.kalibrate.com:18079/kalibrate/db-data:latest"
 alias swagger-editor="docker pull swaggerapi/swagger-editor && docker run -d -p 8888:8080 swaggerapi/swagger-editor && open http://localhost:8888"
+alias cat='bat'
+alias ping='prettyping --nolegend'
+alias top="sudo htop"
+disable r
 
 if [ "$TERM" = "xterm-color" ]; then
   export TERM=xterm-256color

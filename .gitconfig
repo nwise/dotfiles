@@ -8,10 +8,6 @@
 	email = nathanwise@gmail.com
 [merge]
 	tool = p4mergetool
-[mergetool "extMerge"]
-  cmd = extMerge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
-  trustExitCode = false
-  keepBackup = false
 [core]
   editor = /usr/bin/vim
   excludesfile = /Users/nwise/.gitignore_global
