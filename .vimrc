@@ -32,8 +32,6 @@ Bundle 'fugitive.vim'
 Bundle 'minibufexpl.vim'
 Bundle 'https://github.com/mustache/vim-mustache-handlebars'
 Bundle 'Align'
-Plugin 'OmniSharp/omnisharp-vim'
-Plugin 'YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

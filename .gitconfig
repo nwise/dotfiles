@@ -14,7 +14,7 @@
   keepBackup = false
 [core]
   editor = /usr/bin/vim
-  excludesfile = /Users/nwise/.gitignore_global
+	excludesfile = /Users/nathanwise/.gitignore
 [filter "lfs"]
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
