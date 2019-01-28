@@ -153,8 +153,6 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeGlyphReadOnly = "RO"
 map <C-n> :NERDTreeToggle<CR>
 
-let g:OmniSharp_server_path = '/Users/nathanwise/omnisharp-osp/run'
-
 let g:rspec_runner = "os_x_iterm2"
 
 let g:syntastic_enable_elixir_checker = 1

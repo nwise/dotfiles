@@ -5,16 +5,30 @@ plugins=(git)
 fpath=($fpath $HOME/.zsh/func)
 typeset -U fpath
 
-export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
+export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 # export GOROOT=$HOME/go1.X
 export GOPATH=$HOME/workspace/golibs
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
-export JAVA_HOME="$(/usr/libexec/java_home)"
+export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
+source $HOME/.rvm/scripts/rvm
+export PATH="$PATH:$HOME/.dotnet/tools" 
+#export PATH="$PATH:$HOME/workspace/graalvm-ce-1.0.0-rc9/Contents/Home/bin"
+
+export JAVA_HOME="$(/usr/libexec/java_home)/jre"
 export NODE_PATH="/usr/local/lib/node_modules"
 
-export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+#export R_HOME=$(which R)
+#export R_HOME="/usr/local/bin"
+export R_HOME="/Library/Frameworks/R.framework/Resources"
+if [ "${LD_LIBRARY_PATH}" != "" ]
+then
+  export LD_LIBRARY_PATH="/Library/Frameworks/R.framework/Libraries/:${LD_LIBRARY_PATH}"
+else
+  export LD_LIBRARY_PATH="/Library/Frameworks/R.framework/Libraries/"
+fi
+
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export TERM='xterm-color'
