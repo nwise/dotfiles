@@ -6,7 +6,7 @@ filetype off                  " required
 if has('nvim')
   set rtp+=~/.config/nvim/bundle/Vundle.vim
 else
-  set rubydll=/Users/nathanwise/.rvm/rubies/ruby-2.4.1/lib/libruby.2.4.1.dylib
+  " set rubydll=/Users/nate.wise/.rvm/rubies/ruby-2.4.1/lib/libruby.2.4.1.dylib
   set rtp+=~/.vim/bundle/Vundle.vim
 endif
 

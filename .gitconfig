@@ -4,8 +4,8 @@
   st = status
   br = branch
 [user]
-  name = Nathan Wise
-  email = nathanwise@gmail.com
+	name = Nathan Wise
+	email = nathanwise@gmail.com
 [merge]
   tool = p4mergetool
 [mergetool "extMerge"]
@@ -33,3 +33,4 @@
 [pager]
   diff = diff-so-fancy | less --tabs=1,5 -RFX
   show = diff-so-fancy | less --tabs=1,5 -RFX
+	branch = false
