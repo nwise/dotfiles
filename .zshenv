@@ -12,6 +12,7 @@ plugins=(
 fpath=($fpath $HOME/.zsh/func)
 typeset -U fpath
 
+export PATH="$PATH:$HOME/.rvm/bin"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
@@ -31,11 +32,10 @@ export LS_COLORS="di=34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43
 alias resource='source ~/.zshenv'
 alias ss='bundle exec script/server'
 alias be='bundle exec'
-alias rs='bundle exec rails server'
-alias rst='RAILS_ENV=test bundle exec rails server'
+alias rs='bin/server'
 alias rc='bundle exec rails console'
 alias rct='RAILS_ENV=test bundle exec rails console'
-alias rt='bundle exec rails test -v'
+alias rt='bundle exec rails test'
 alias rspec='bundle exec rspec'
 alias regentags='ctags --file-scope=no -R'
 alias delete_orig="find . -name '*.orig' -delete"
@@ -44,13 +44,15 @@ alias weather="curl -4 http://wttr.in/Brecksville"
 alias swagger-editor="docker pull swaggerapi/swagger-editor && docker run -d -p 8888:8080 swaggerapi/swagger-editor && open http://localhost:8888"
 alias redis-start="docker run -p 6379:6379 --name dev-redis -d --rm redis; docker ps"
 alias redis-stop="docker stop dev-redis; docker ps"
+alias elastic-start="docker run -p 9200:9200 --name dev-elastic -d --rm elasticsearch:6.7.0; docker ps"
+alias elastic-stop="docker stop dev-elastic; docker ps"
 alias mysqlstart='sudo /opt/local/bin/mysqld_safe5 &'
 alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
 alias cov='open coverage/index.html'
 alias cat='bat'
 alias ping='prettyping --nolegend'
 alias top='sudo htop'
-alias standup='open -a "Google Chrome" https://meet.google.com/kwg-gpmk-zbc'
+alias standup='open -a "Google Chrome" https://meet.google.com/ppy-ninx-aqn'
 
 if [ "$TERM" = "xterm-color" ]; then
   export TERM=xterm-256color

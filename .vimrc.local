@@ -9,7 +9,8 @@ set noswapfile
 set nowrap
 set number
 set hlsearch
-set guifont=Menlo\ for\ Powerline:h15
+"set guifont=Menlo\ for\ Powerline:h15
+set guifont=Hack\ Nerd\ Font:h15
 set listchars=tab:.>,trail:.
 set list
 set expandtab ts=2 sw=2 ai

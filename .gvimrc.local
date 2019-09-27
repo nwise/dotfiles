@@ -1,7 +1,8 @@
 syntax enable
 set background=dark
 colorscheme solarized
-set guifont=Menlo\ for\ Powerline:h15
+"set guifont=Menlo\ for\ Powerline:h15
+let g:Powerline_symbols = 'fancy'
 set lines=58
 set columns=108
 
@@ -14,5 +15,4 @@ set noswapfile
 set nowrap
 set number
 set hlsearch
-set transparency=10
-
+set transparency=5

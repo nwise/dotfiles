@@ -1,3 +1,4 @@
+set shell=/bin/sh
 let mapleader=","
 
 filetype off                  " required
@@ -6,7 +7,7 @@ filetype off                  " required
 if has('nvim')
   set rtp+=~/.config/nvim/bundle/Vundle.vim
 else
-  " set rubydll=/Users/nate.wise/.rvm/rubies/ruby-2.4.1/lib/libruby.2.4.1.dylib
+  set rubydll=/Users/nate.wise/.rvm/rubies/ruby-2.6.3/lib/libruby.dylib
   set rtp+=~/.vim/bundle/Vundle.vim
 endif
 
@@ -16,9 +17,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
-Plugin 'thoughtbot/vim-rspec'
-Plugin 'janko-m/vim-test'
-Plugin 'mhinz/vim-grepper'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rvm'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlp.vim'
 Plugin 'snipMate'
@@ -27,11 +28,15 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'vim-tags'
 Plugin 'The-NERD-Commenter'
 Plugin 'The-NERD-tree'
-Bundle 'https://github.com/ngmy/vim-rubocop'
-Bundle 'fugitive.vim'
-Bundle 'minibufexpl.vim'
-Bundle 'https://github.com/mustache/vim-mustache-handlebars'
-Bundle 'Align'
+Plugin 'junegunn/fzf.vim'
+Plugin 'jremmen/vim-ripgrep'
+Plugin 'dense-analysis/ale'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'ngmy/vim-rubocop'
+
+let g:rg_highligh = 1
+let g:deoplete#enable_at_startup = 1
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -152,18 +157,29 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeGlyphReadOnly = "RO"
 map <C-n> :NERDTreeToggle<CR>
+map <C-t> :FZF<CR>
 
 let g:rspec_runner = "os_x_iterm2"
-
 let g:syntastic_enable_elixir_checker = 1
-
-let g:vimrubocop_config = "~/.rubocop/rubocop.yml"
 
 let g:grepper = {}
 let g:grepper.tools = ['grep']
 nnoremap <Leader>* :Grepper -cword -noprompt<CR>
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
+
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" Set specific linters
+"let g:ale_linters = {
+"\   'javascript': ['eslint'],
+"\   'ruby': ['rubocop'],
+"\}
+"let g:ale_linters_explicit = 1
+let g:airline#extensions#ale#enabled = 1
+let g:airline_solarized_bg='dark'
+let g:airline_powerline_fonts = 1
+let g:ale_sign_column_always = 1
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
@@ -172,3 +188,27 @@ endif
 set mouse=a
 set t_Co=256
 
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
+let g:LanguageClient_serverCommands = {
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ }
+
+set rtp+=/usr/local/opt/fzf
+set textwidth=80
+set colorcolumn=+1
+
+set guifont=Hack\ Nerd\ Font:h15
+if has("gui_running")
+   let s:uname = system("uname")
+   if s:uname == "Darwin\n"
+    set guifont=Hack\ Nerd\ Font:h15
+   endif
+endif
