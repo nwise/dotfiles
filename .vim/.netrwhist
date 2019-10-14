@@ -1,8 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/nathanwise/workspace/movable/WebClient'
-let g:netrw_dirhist_2='/usr/local/etc/nginx'
-let g:netrw_dirhist_3='/Users/nathanwise/.zsh'
-let g:netrw_dirhist_4='/Users/nathanwise/workspace/dhs_group/api/.deliver'
-let g:netrw_dirhist_5='/Users/nathanwise/.oh-my-zsh'
-let g:netrw_dirhist_6='/Users/nathanwise/.oh-my-zsh/plugins'
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/Users/nate.wise/workspace/partner-engine/lib/seeds/nationwide'
+let g:netrw_dirhist_2='/Users/nate.wise/workspace/partner-engine/lib/tasks/patches'
+let g:netrw_dirhist_1='/Users/nate.wise/workspace/partner-engine/lib/tasks'

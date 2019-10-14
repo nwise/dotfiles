@@ -1,4 +1,4 @@
-set shell=/bin/sh
+set shell=/bin/zsh
 let mapleader=","
 
 filetype off                  " required
@@ -20,20 +20,23 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rvm'
-Plugin 'scrooloose/nerdtree'
-Plugin 'ctrlp.vim'
-Plugin 'snipMate'
 Plugin 'surround.vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'vim-tags'
 Plugin 'The-NERD-Commenter'
-Plugin 'The-NERD-tree'
+Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/fzf.vim'
 Plugin 'jremmen/vim-ripgrep'
 Plugin 'dense-analysis/ale'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'ngmy/vim-rubocop'
+Plugin 'janko/vim-test'
+Plugin 'rizzatti/dash.vim'
+Plugin 'ycm-core/YouCompleteMe'
+Plugin 'vim-scripts/Align'
+Plugin 'fholgado/minibufexpl.vim'
 
 let g:rg_highligh = 1
 let g:deoplete#enable_at_startup = 1
@@ -141,11 +144,7 @@ command! Q :q
 command! WQ :wq
 command! Wq :wq
 
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
-
+let test#strategy = "dispatch"
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
@@ -158,9 +157,11 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeGlyphReadOnly = "RO"
 map <C-n> :NERDTreeToggle<CR>
 map <C-t> :FZF<CR>
+nmap <leader>f :FZF<CR>
+nmap <leader>b :Buffers<CR>
+nmap <leader>d :Dash<CR>
 
 let g:rspec_runner = "os_x_iterm2"
-let g:syntastic_enable_elixir_checker = 1
 
 let g:grepper = {}
 let g:grepper.tools = ['grep']
@@ -171,39 +172,26 @@ xmap gs <plug>(GrepperOperator)
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " Set specific linters
-"let g:ale_linters = {
-"\   'javascript': ['eslint'],
-"\   'ruby': ['rubocop'],
-"\}
-"let g:ale_linters_explicit = 1
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+
 let g:airline#extensions#ale#enabled = 1
 let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts = 1
-let g:ale_sign_column_always = 1
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
 set mouse=a
 set t_Co=256
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort "{{{
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
-
-let g:LanguageClient_serverCommands = {
-    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
-    \ }
 
 set rtp+=/usr/local/opt/fzf
 set textwidth=80
 set colorcolumn=+1
+highlight clear SignColumn
+syntax on
 
 set guifont=Hack\ Nerd\ Font:h15
 if has("gui_running")
@@ -212,3 +200,25 @@ if has("gui_running")
     set guifont=Hack\ Nerd\ Font:h15
    endif
 endif
+
+let g:ycm_language_server = [
+  \   {
+  \     'name': 'yaml',
+  \     'cmdline': [ 'node', expand( '$HOME/workspace/lsp-examples/yaml/node_modules/.bin/yaml-language-server' ), '--stdio' ],
+  \     'filetypes': [ 'yaml' ],
+  \   },
+  \   {
+  \     'name': 'json',
+  \     'cmdline': [ 'node', expand( '$HOME/workspace/lsp-examples/json/node_modules/.bin/vscode-json-languageserver' ), '--stdio' ],
+  \     'filetypes': [ 'json' ],
+  \   },
+  \   {
+  \     'name': 'ruby',
+  \     'cmdline': [ expand( '$HOME/workspace/lsp-example/ruby/bin/solargraph' ), 'stdio' ],
+  \     'filetypes': [ 'ruby' ],
+  \   },
+  \   { 'name': 'kotlin',
+  \     'filetypes': [ 'kotlin' ],
+  \     'cmdline': [ expand( '$HOME/workspace/lsp-examples/kotlin/server/build/install/server/bin/server' ) ],
+  \   },
+  \ ]
