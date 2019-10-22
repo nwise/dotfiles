@@ -2,12 +2,10 @@ export ZSH=$HOME/.oh-my-zsh
 # ZSH_THEME="agnoster"
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status rvm background_jobs time)
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs)
+#ZSH_TMUX_AUTOSTART='true'
 POWERLEVEL9K_MODE='nerdfont-complete'
 ZSH_THEME="powerlevel9k/powerlevel9k"
-plugins=(
-  git
-  zsh-syntax-highlighting
-)
+plugins=(sudo git history tmux zsh-syntax-highlighting tmuxinator)
 
 fpath=($fpath $HOME/.zsh/func)
 typeset -U fpath
@@ -37,7 +35,7 @@ alias rc='bundle exec rails console'
 alias rct='RAILS_ENV=test bundle exec rails console'
 alias rt='bundle exec rails test'
 alias rspec='bundle exec rspec'
-alias regentags='ctags --file-scope=no -R'
+alias regentags='ctags --file-scope=no -R --kinds-Ruby=+Scfm --exclude=\*.html --exclude=\*.json --exclude=\*.xml --exclude=\*.xsd --exclude=\*.css --exclude=\*.log'
 alias delete_orig="find . -name '*.orig' -delete"
 alias branch_cleanup="git branch --merged | egrep -v '(^\*|master|dev|qa)' | xargs git branch -d"
 alias weather="curl -4 http://wttr.in/Brecksville"
@@ -72,4 +70,4 @@ source $ZSH/oh-my-zsh.sh
 alias ls='ls -G'
 alias ll='ls -la'
 
-eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"

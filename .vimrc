@@ -11,6 +11,10 @@ else
   set rtp+=~/.vim/bundle/Vundle.vim
 endif
 
+if has('python3')
+  silent! python3 1
+endif
+
 call vundle#begin()
 
 " let Vundle manage Vundle, required
@@ -28,35 +32,28 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/fzf.vim'
 Plugin 'jremmen/vim-ripgrep'
 Plugin 'dense-analysis/ale'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'janko/vim-test'
 Plugin 'rizzatti/dash.vim'
-Plugin 'ycm-core/YouCompleteMe'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
+Plugin 'fishbullet/deoplete-ruby'
 Plugin 'vim-scripts/Align'
 Plugin 'fholgado/minibufexpl.vim'
+Plugin 'itchyny/lightline.vim'
 
 let g:rg_highligh = 1
 let g:deoplete#enable_at_startup = 1
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
+" Put non-Plugin stuff after this line
 set number
 set ruler
 syntax on
@@ -138,7 +135,6 @@ cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 set modeline
 set modelines=10
 
-" Default color scheme
 command! W :w
 command! Q :q
 command! WQ :wq
@@ -155,6 +151,7 @@ let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeGlyphReadOnly = "RO"
+
 map <C-n> :NERDTreeToggle<CR>
 map <C-t> :FZF<CR>
 nmap <leader>f :FZF<CR>
@@ -174,10 +171,6 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " Set specific linters
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
-
-let g:airline#extensions#ale#enabled = 1
-let g:airline_solarized_bg='dark'
-let g:airline_powerline_fonts = 1
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
@@ -200,25 +193,3 @@ if has("gui_running")
     set guifont=Hack\ Nerd\ Font:h15
    endif
 endif
-
-let g:ycm_language_server = [
-  \   {
-  \     'name': 'yaml',
-  \     'cmdline': [ 'node', expand( '$HOME/workspace/lsp-examples/yaml/node_modules/.bin/yaml-language-server' ), '--stdio' ],
-  \     'filetypes': [ 'yaml' ],
-  \   },
-  \   {
-  \     'name': 'json',
-  \     'cmdline': [ 'node', expand( '$HOME/workspace/lsp-examples/json/node_modules/.bin/vscode-json-languageserver' ), '--stdio' ],
-  \     'filetypes': [ 'json' ],
-  \   },
-  \   {
-  \     'name': 'ruby',
-  \     'cmdline': [ expand( '$HOME/workspace/lsp-example/ruby/bin/solargraph' ), 'stdio' ],
-  \     'filetypes': [ 'ruby' ],
-  \   },
-  \   { 'name': 'kotlin',
-  \     'filetypes': [ 'kotlin' ],
-  \     'cmdline': [ expand( '$HOME/workspace/lsp-examples/kotlin/server/build/install/server/bin/server' ) ],
-  \   },
-  \ ]
